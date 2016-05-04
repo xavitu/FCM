@@ -14,6 +14,7 @@ public class Main {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				
+				/*hollllllllllllllllaaaaa*/
 				Config c = new Config();
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
@@ -27,6 +28,8 @@ public class Main {
 				view.registerController(controller);
 				grafica.registerController(controller);
 				view.setVisible(true);
+				/*CAnviiii*/
+				conn.disconnect();
 			}
 		});	
 	}
