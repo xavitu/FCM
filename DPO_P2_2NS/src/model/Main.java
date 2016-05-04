@@ -14,7 +14,7 @@ public class Main {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				
-				/*hollllllllllllllllaaaaa*/
+				/*hollllllllllllllllaaaaa-asd-asd-asda-sda-s-dasd*/
 				Config c = new Config();
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
