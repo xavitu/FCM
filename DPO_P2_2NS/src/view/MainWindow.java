@@ -72,7 +72,7 @@ public class MainWindow extends JFrame {
 	private JButton jbVisualitzar;
 	
 	
-	public MainWindow (ArrayList<Object[]> infoaeroports,ArrayList<Object[]> infovols){
+	public MainWindow (ArrayList<Object[]> infoaeroports,ArrayList<Object[]> infovols,ArrayList<Object[]> infoavions){
 		
 
 		JTabbedPane visualAereo = new JTabbedPane();
@@ -96,12 +96,6 @@ public class MainWindow extends JFrame {
 
 		informacio.addTab("Aeroports", scrollPane1);
 
-		String[] columNames2 = {"Identificador","Data sortida", "Duracio trajecte",
-				"Retard", "Estat vol", "Origen", "Desti"	
-		};
-
-		Object[][] data2 ={
-		};
 		TableModel modelo2 = new TableModel();
 		modelo2.addColumn("Identificador");
 		modelo2.addColumn("Data sortida");
@@ -110,8 +104,8 @@ public class MainWindow extends JFrame {
 		modelo2.addColumn("Estat vol");
 		modelo2.addColumn("Origen");
 		modelo2.addColumn("Desti");
-		for(int i=0;i<infoaeroports.size();i++){
-			modelo.addRow(infovols.get(i));
+		for(int i=0;i<infovols.size();i++){
+			modelo2.addRow(infovols.get(i));
 		}
 		JTable table2 = new JTable(modelo2);
 		table2.getTableHeader().setReorderingAllowed(false);
@@ -119,20 +113,14 @@ public class MainWindow extends JFrame {
 		informacio.addTab("Vols", scrollPane2);		
 		table2.setFillsViewportHeight(true);
 
-		String[] columNames3 = {"Identificador", "Model avio", "Nombre places", "Altura de creuer"
-		};
-
-		Object[][] data3 ={
-		};
-
 		TableModel modelo3 = new TableModel();
 		modelo3.addColumn("Identificador");
 		modelo3.addColumn("Model avio");
 		modelo3.addColumn("Nombre places");
 		modelo3.addColumn("Altura de creuer");
-		modelo3.addRow(new Object[] {"1","2","3","4"});
-		modelo3.addRow(new Object[] {"1","2","3","4"});
-		modelo3.addRow(new Object[] {"1","2","3","4"});
+		for(int i=0;i<infoavions.size();i++){
+			modelo3.addRow(infoavions.get(i));
+		}
 		JTable table3 = new JTable(modelo3);
 		table3.getTableHeader().setReorderingAllowed(false);
 		JScrollPane scrollPane3 = new JScrollPane(table3);
@@ -218,7 +206,7 @@ public class MainWindow extends JFrame {
 
 		JPanel jpSub9 = new JPanel();
 		jpSub9.setLayout(new BorderLayout());
-		jlIcao = new JLabel("Referencia");
+		jlIcao = new JLabel("Tipus Avio");
 		jtfIcao = new JTextField();
 		jtfIcao.setPreferredSize(new Dimension(500, 10));
 		jpSub9.add(jlIcao, BorderLayout.LINE_START);

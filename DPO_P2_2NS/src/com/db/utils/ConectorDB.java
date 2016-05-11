@@ -45,9 +45,10 @@ public class ConectorDB {
         try {
             s =(Statement) conn.createStatement();
             s.executeUpdate(query);
+            System.out.println("Inserció feta correctement");
 
         } catch (SQLException ex) {
-            System.out.println("Problema al Inserir --> " + ex.getSQLState());
+            System.out.println("Problema al Inserir --> SQLEstate: " + ex.getSQLState() + " SQLError: "+ ex.getErrorCode());
         }
     }
     

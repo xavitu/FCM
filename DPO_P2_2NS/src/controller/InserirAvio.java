@@ -15,6 +15,7 @@ public class InserirAvio {
 		this.capacitat = capacitat;
 		this.altura_max = altura_max;
 		conn.insertQuery("INSERT INTO avio (model, capacitat, altura_max) VALUES ('" + this.model + "','" + this.capacitat + "','" + this.altura_max + "');");
+		
 	}
 	
 

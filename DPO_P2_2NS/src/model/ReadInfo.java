@@ -108,6 +108,33 @@ public class ReadInfo {
 	return null;
 	}
 	
+	public static ArrayList<Object[]> ompleInfoAvions(ConectorDB conn){
+		Object a,b,c,d,e,f,g;
+		a =  new Object();
+		b =  new Object();
+		c =  new Object();
+		d =  new Object();
+		ArrayList<Object[]> infoavions = new ArrayList<Object[]>();
+		ResultSet rs = conn.selectQuery("SELECT * FROM avio");
+	try{
+		while (rs.next()){
+			a = rs.getObject("id_avio");
+			b = rs.getObject("model");
+			c = rs.getObject("capacitat");
+			d = rs.getObject("altura_max");
+			
+			Object[] info = new Object[]{a,b,c,d};
+			infoavions.add(info);
+		}
+		
+		
+		rs.close();
+		return infoavions;
+	}
+	catch ( SQLException err) { err.printStackTrace();  }
+	return null;
+	}
+	
 	
 
 }

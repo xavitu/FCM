@@ -19,13 +19,14 @@ public class InserirVol {
 		this.retard = retard;
 		this.estat = estat;
 		
-		conn.insertQuery("INSERT INTO vol(data, duracio, retard, estat,origen,desti) VALUES "
-				+ "('" + this.data + 
-				"','" + this.duracio + 
-				"','" + this.retard + 
-				"','" + this.estat + 
-				"','"+this.origen + 
-				"','" + this.desti + "');");
+		conn.insertQuery("INSERT INTO vol(data, duracio, retard, estat,aeroportOrigen,aeroportDesti) VALUES "+ 
+				"('"   +  this.data     + 
+				 "','" +  this.duracio  + 
+				 "','" +  this.retard   + 
+				 "','" +  this.estat    + 
+				 "','" +  this.origen   + 
+				 "','" + this.desti     + 
+				 "');");
 	}
 	
 
