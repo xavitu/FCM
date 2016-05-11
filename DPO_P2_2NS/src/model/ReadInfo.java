@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.db.utils.ConectorDB;
@@ -50,25 +51,63 @@ public class ReadInfo {
 			
 	}
 	
-	public static Object[] ompleInfoVols(ConectorDB conn){
+	public static ArrayList<Object[]> ompleInfoAeroports(ConectorDB conn){
 		Object a,b,c;
 		a =  new Object();
 		b =  new Object();
 		c =  new Object();
+		ArrayList<Object[]> infoaeroports = new ArrayList<Object[]>();
 		ResultSet rs = conn.selectQuery("SELECT * FROM aeroport");
 	try{
 		while (rs.next()){
 			a = rs.getObject("id_aerop");
 			b = rs.getObject("nom_aerop");
 			c = rs.getObject("coord");
+			Object[] info = new Object[]{a,b,c};
+			infoaeroports.add(info);
 		}
 		
-		Object[] info = new Object[]{a,b,c};
+		
 		rs.close();
-		return info;
+		return infoaeroports;
 	}
-	catch ( SQLException e) { e.printStackTrace();  }
+	catch ( SQLException err) { err.printStackTrace();  }
 	return null;
 	}
+	
+	public static ArrayList<Object[]> ompleInfoVols(ConectorDB conn){
+		Object a,b,c,d,e,f,g;
+		a =  new Object();
+		b =  new Object();
+		c =  new Object();
+		d =  new Object();
+		e =  new Object();
+		f =  new Object();
+		g =  new Object();
+		ArrayList<Object[]> infovols = new ArrayList<Object[]>();
+		ResultSet rs = conn.selectQuery("SELECT * FROM vol");
+	try{
+		while (rs.next()){
+			a = rs.getObject("id_vol");
+			b = rs.getObject("data");
+			c = rs.getObject("duracio");
+			d = rs.getObject("retard");
+			e = rs.getObject("estat");
+			f = rs.getObject("origen");
+			g = rs.getObject("desti");
+			
+			Object[] info = new Object[]{a,b,c,d,e,f,g};
+			infovols.add(info);
+		}
+		
+		
+		rs.close();
+		return infovols;
+	}
+	catch ( SQLException err) { err.printStackTrace();  }
+	return null;
+	}
+	
+	
 
 }

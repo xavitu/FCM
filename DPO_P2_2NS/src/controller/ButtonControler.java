@@ -39,7 +39,7 @@ public class ButtonControler implements ActionListener{
 			String origen = view.typedOrigen();
 			String desti = view.typedDesti();
 			
-			InserirVol iv = new InserirVol(conn,sortida, durada, retard, estat);
+			InserirVol iv = new InserirVol(conn,sortida, durada, retard, estat,origen,desti);
 		}
 		
 		if(event.getActionCommand().equals("AFEGIRAVIO")){

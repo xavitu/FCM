@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -71,7 +72,7 @@ public class MainWindow extends JFrame {
 	private JButton jbVisualitzar;
 	
 	
-	public MainWindow (Object[] info){
+	public MainWindow (ArrayList<Object[]> infoaeroports,ArrayList<Object[]> infovols){
 		
 
 		JTabbedPane visualAereo = new JTabbedPane();
@@ -83,9 +84,9 @@ public class MainWindow extends JFrame {
 		modelo.addColumn("Identificador");
 		modelo.addColumn("Nom aeroport");
 		modelo.addColumn("Coordenades");
-		modelo.addRow(info);
-		//modelo.addRow(new Object[] {"1","2","3"});
-		//modelo.addRow(new Object[] {"1","2","3"});
+		for(int i=0;i<infoaeroports.size();i++){
+			modelo.addRow(infoaeroports.get(i));
+		}
 		JTable table = new JTable (modelo);
 		table.getTableHeader().setReorderingAllowed(false);
 		/*CANVI JTABLE*/
@@ -109,9 +110,9 @@ public class MainWindow extends JFrame {
 		modelo2.addColumn("Estat vol");
 		modelo2.addColumn("Origen");
 		modelo2.addColumn("Desti");
-		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
-		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
-		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
+		for(int i=0;i<infoaeroports.size();i++){
+			modelo.addRow(infovols.get(i));
+		}
 		JTable table2 = new JTable(modelo2);
 		table2.getTableHeader().setReorderingAllowed(false);
 		JScrollPane scrollPane2 = new JScrollPane(table2);
@@ -181,9 +182,9 @@ public class MainWindow extends JFrame {
 
 		JPanel jpSub5 = new JPanel();
 		jpSub5.setLayout(new BorderLayout());
-		jlDataSortida = new JLabel("Sortida");
+		jlDataSortida = new JLabel("Data sortida (aaaa-mm-dd hh:mm:ss)");
 		jtfDataSortida = new JTextField();
-		jtfDataSortida.setPreferredSize(new Dimension(500, 10));
+		jtfDataSortida.setPreferredSize(new Dimension(350, 10));
 		jpSub5.add(jlDataSortida, BorderLayout.LINE_START);
 		jpSub5.add(jtfDataSortida, BorderLayout.LINE_END);
 		jpAfegirVol.add(jpSub5);

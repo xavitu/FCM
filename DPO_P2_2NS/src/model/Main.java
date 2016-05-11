@@ -4,6 +4,9 @@ import com.db.utils.*;
 import controller.ButtonControler;
 import view.MainWindow;
 import view.VistaGrafica;
+
+import java.util.ArrayList;
+
 import javax.swing.SwingUtilities;
 
 public class Main {
@@ -18,8 +21,9 @@ public class Main {
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
 				conn.connect();
-				Object[] info = ReadInfo.ompleInfoVols(conn);
-				MainWindow view = new MainWindow(info);
+				ArrayList<Object[]> infoaeroports = ReadInfo.ompleInfoAeroports(conn);
+				ArrayList<Object[]> infovols = ReadInfo.ompleInfoAeroports(conn);
+				MainWindow view = new MainWindow(infoaeroports,infovols);
 				VistaGrafica  grafica = new VistaGrafica();	
 				grafica.crearVentana();
 				grafica.setVisible(false);
