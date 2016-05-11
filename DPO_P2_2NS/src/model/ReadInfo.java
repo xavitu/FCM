@@ -2,8 +2,11 @@ package model;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Scanner;
 
+import com.db.utils.ConectorDB;
 import com.db.utils.Config;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -45,6 +48,27 @@ public class ReadInfo {
 		config = new Config (port,ip,nombbdd,user,password,portAvio,portClient);
 		return config;
 			
+	}
+	
+	public static Object[] ompleInfoVols(ConectorDB conn){
+		Object a,b,c;
+		a =  new Object();
+		b =  new Object();
+		c =  new Object();
+		ResultSet rs = conn.selectQuery("SELECT * FROM aeroport");
+	try{
+		while (rs.next()){
+			a = rs.getObject("id_aerop");
+			b = rs.getObject("nom_aerop");
+			c = rs.getObject("coord");
+		}
+		
+		Object[] info = new Object[]{a,b,c};
+		rs.close();
+		return info;
+	}
+	catch ( SQLException e) { e.printStackTrace();  }
+	return null;
 	}
 
 }

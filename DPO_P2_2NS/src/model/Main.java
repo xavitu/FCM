@@ -18,8 +18,8 @@ public class Main {
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
 				conn.connect();
-				
-				MainWindow view = new MainWindow();
+				Object[] info = ReadInfo.ompleInfoVols(conn);
+				MainWindow view = new MainWindow(info);
 				VistaGrafica  grafica = new VistaGrafica();	
 				grafica.crearVentana();
 				grafica.setVisible(false);

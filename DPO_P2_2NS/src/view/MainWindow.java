@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.sql.*;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,6 +14,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableColumn;
+import com.db.utils.*;
 
 public class MainWindow extends JFrame {
 
@@ -66,29 +69,27 @@ public class MainWindow extends JFrame {
 	private JTextField jtfDesti;
 	
 	private JButton jbVisualitzar;
-	public MainWindow (){
+	
+	
+	public MainWindow (Object[] info){
+		
 
 		JTabbedPane visualAereo = new JTabbedPane();
 		JTabbedPane informacio = new JTabbedPane();
 		setResizable(false);
 		
-		String[] columNames = {"Identificador","Nom aeroport", "Coordenades"};
-		Object[][] data = {
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"},
-				{"Exemple", "De", "Prova"}, {"segon","exemple","prova"}
-		};
-
-		JTable table = new JTable(data, columNames);
-
+		/* CANVI JTABLE*/
+		TableModel modelo = new TableModel();
+		modelo.addColumn("Identificador");
+		modelo.addColumn("Nom aeroport");
+		modelo.addColumn("Coordenades");
+		modelo.addRow(info);
+		//modelo.addRow(new Object[] {"1","2","3"});
+		//modelo.addRow(new Object[] {"1","2","3"});
+		JTable table = new JTable (modelo);
+		table.getTableHeader().setReorderingAllowed(false);
+		/*CANVI JTABLE*/
+		
 		JScrollPane scrollPane1 = new JScrollPane(table);
 		table.setFillsViewportHeight(true);
 
@@ -100,8 +101,19 @@ public class MainWindow extends JFrame {
 
 		Object[][] data2 ={
 		};
-
-		JTable table2 = new JTable(data2, columNames2);
+		TableModel modelo2 = new TableModel();
+		modelo2.addColumn("Identificador");
+		modelo2.addColumn("Data sortida");
+		modelo2.addColumn("Duracio trajecte");
+		modelo2.addColumn("Retard");
+		modelo2.addColumn("Estat vol");
+		modelo2.addColumn("Origen");
+		modelo2.addColumn("Desti");
+		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
+		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
+		modelo2.addRow(new Object[] {"1","2","3","4","5","6","7"});
+		JTable table2 = new JTable(modelo2);
+		table2.getTableHeader().setReorderingAllowed(false);
 		JScrollPane scrollPane2 = new JScrollPane(table2);
 		informacio.addTab("Vols", scrollPane2);		
 		table2.setFillsViewportHeight(true);
@@ -112,7 +124,16 @@ public class MainWindow extends JFrame {
 		Object[][] data3 ={
 		};
 
-		JTable table3 = new JTable(data3, columNames3);
+		TableModel modelo3 = new TableModel();
+		modelo3.addColumn("Identificador");
+		modelo3.addColumn("Model avio");
+		modelo3.addColumn("Nombre places");
+		modelo3.addColumn("Altura de creuer");
+		modelo3.addRow(new Object[] {"1","2","3","4"});
+		modelo3.addRow(new Object[] {"1","2","3","4"});
+		modelo3.addRow(new Object[] {"1","2","3","4"});
+		JTable table3 = new JTable(modelo3);
+		table3.getTableHeader().setReorderingAllowed(false);
 		JScrollPane scrollPane3 = new JScrollPane(table3);
 		informacio.addTab("Avions", scrollPane3);		
 		table3.setFillsViewportHeight(true);
@@ -295,6 +316,8 @@ public class MainWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
+	
+
 
 	public void registerController(ActionListener controller){
 		jbAfegirAeroport.addActionListener(controller);
