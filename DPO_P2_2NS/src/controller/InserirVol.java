@@ -25,7 +25,7 @@ public class InserirVol {
 				 "','" +  this.retard   + 
 				 "','" +  this.estat    + 
 				 "','" +  this.origen   + 
-				 "','" + this.desti     + 
+				 "','" +  this.desti     + 
 				 "');");
 	}
 	

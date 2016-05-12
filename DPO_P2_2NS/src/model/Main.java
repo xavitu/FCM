@@ -4,9 +4,9 @@ import com.db.utils.*;
 import controller.ButtonControler;
 import view.MainWindow;
 import view.VistaGrafica;
+import shokets.*;
 
 import java.util.ArrayList;
-
 import javax.swing.SwingUtilities;
 
 public class Main {
@@ -16,8 +16,10 @@ public class Main {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-
-				Config c = new Config();
+				
+				clientListen cl = new clientListen();
+				cl.initServer();
+				/*Config c = new Config();
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
 				conn.connect();
@@ -31,7 +33,7 @@ public class Main {
 				ButtonControler controller = new ButtonControler(view, grafica,conn);
 				view.registerController(controller);
 				grafica.registerController(controller);
-				view.setVisible(true);
+				view.setVisible(true);*/
 
 			}
 		});	
