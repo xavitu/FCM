@@ -19,7 +19,7 @@ public class JPanelBackground extends JPanel {
 
 	// Metodo que es llamado automaticamente por la maquina virtual Java cada vez que repinta
 	public void paintComponent(Graphics g) {
-
+		super.paintComponent(g);
 		/* Obtenemos el tamaño del panel para hacer que se ajuste a este
 		cada vez que redimensionemos la ventana y se lo pasamos al drawImage */
 		int width = this.getSize().width;

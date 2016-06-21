@@ -19,22 +19,25 @@ public class Main {
 				
 				clientListen cl = new clientListen();
 				cl.initServer();
-				/*Config c = new Config();
+				/*
+				Config c = new Config();
 				c = ReadInfo.carregaDades();
 				ConectorDB conn = new ConectorDB("root", "", "fcm", 3306);
 				conn.connect();
 				ArrayList<Object[]> infoaeroports = ReadInfo.ompleInfoAeroports(conn);
 				ArrayList<Object[]> infovols = ReadInfo.ompleInfoVols(conn);
 				ArrayList<Object[]> infoavions = ReadInfo.ompleInfoAvions(conn);
+				
 				MainWindow view = new MainWindow(infoaeroports,infovols,infoavions);
 				VistaGrafica  grafica = new VistaGrafica();	
+				
 				grafica.crearVentana();
 				grafica.setVisible(false);
 				ButtonControler controller = new ButtonControler(view, grafica,conn);
 				view.registerController(controller);
 				grafica.registerController(controller);
-				view.setVisible(true);*/
-
+				view.setVisible(true);
+				 */
 			}
 		});	
 	}

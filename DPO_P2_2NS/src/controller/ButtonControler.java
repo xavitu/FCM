@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.db.utils.*;
 
+import model.CounterThread;
 import view.MainWindow;
 import view.VistaGrafica;
 
@@ -12,6 +13,11 @@ public class ButtonControler implements ActionListener{
 	private VistaGrafica grafica;
 	private MainWindow view;
 	private ConectorDB conn;
+	private CounterThread timeCounter;
+	private int x1;
+	private int x2;
+	private int y1;
+	private int y2;
 	
 	
 	public ButtonControler(MainWindow view, VistaGrafica grafica, ConectorDB conn) {
@@ -53,10 +59,23 @@ public class ButtonControler implements ActionListener{
 		
 		if(event.getActionCommand().equals("VIS") ){
 			grafica.setVisible(true);
+			grafica.threadTemps.start();
 		}
 		if (event.getActionCommand().equals("CLOSE")){
+			grafica.threadTemps.interrupt();
 			grafica.setVisible(false);
+			
 		}
+	}
+	public void movimentAvions(){
+		grafica.afegeixAvio(x1, y1);
+	}
+	
+	public void SetLinea(int x1, int x2, int y1, int y2){
+		this.x1 = x1;
+		this.x2 = x2;
+		this.y1 = y1;
+		this.y2 = y2;	
 	}
 	
 }
